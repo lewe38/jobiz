@@ -17,6 +17,7 @@ Extractor integrations are now registered through manifests and loaded automatic
 | [JobSpy](/docs/next/extractors/jobspy) | Multi-source discovery (Indeed, LinkedIn, Glassdoor) | Requires Python wrapper execution per term; source availability and quality vary by site/location | `JOBSPY_SITES`, `JOBSPY_SEARCH_TERMS`, `JOBSPY_RESULTS_WANTED`, `JOBSPY_HOURS_OLD`, `JOBSPY_LINKEDIN_FETCH_DESCRIPTION` | Produces JSON per term, then orchestrator normalizes and de-duplicates by `jobUrl` |
 | [Adzuna](/docs/next/extractors/adzuna) | API-based multi-country discovery with low scraping overhead | Requires valid App ID/App Key; country must be in Adzuna-supported list | `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`, `ADZUNA_MAX_JOBS_PER_TERM` | API pagination to dataset output; orchestrator maps progress and de-duplicates by `sourceJobId`/`jobUrl` |
 | [Hiring Cafe](/docs/next/extractors/hiring-cafe) | Browser-backed discovery using Hiring Cafe search APIs | Subject to upstream anti-bot checks; uses browser context and encoded search-state payloads | `HIRING_CAFE_SEARCH_TERMS`, `HIRING_CAFE_COUNTRY`, `HIRING_CAFE_MAX_JOBS_PER_TERM`, `HIRING_CAFE_DATE_FETCHED_PAST_N_DAYS` | Uses existing pipeline term/country/budget knobs and maps directly to normalized jobs |
+| [Welcome to the Jungle](/docs/next/extractors/wtj) | European job board discovery via WTJ public API | No credentials required; results vary by search term and optional country filter | `WTJ_SEARCH_TERMS`, `WTJ_MAX_JOBS_PER_TERM`, `WTJ_COUNTRY_CODE` | Paginates the WTJ jobs search API per term; not enabled by default |
 | [UKVisaJobs](/docs/next/extractors/ukvisajobs) | UK visa sponsorship-focused roles | Requires authenticated session and periodic token/cookie refresh | `UKVISAJOBS_EMAIL`, `UKVISAJOBS_PASSWORD`, `UKVISAJOBS_MAX_JOBS`, `UKVISAJOBS_SEARCH_KEYWORD` | API pagination + dataset output; orchestrator de-dupes and may fetch missing descriptions |
 | [Manual Import](/docs/next/extractors/manual) | One-off jobs not covered by scrapers | Inference quality depends on model/provider and input quality; some URLs cannot be fetched reliably | App/API endpoints (`/api/manual-jobs/infer`, `/api/manual-jobs/import`) | Accepts text/HTML/URL, runs inference, then saves and scores job after review |
 
@@ -27,6 +28,7 @@ Extractor integrations are now registered through manifests and loaded automatic
 - Use **Hiring Cafe** when you want another term/country-driven source without adding credentials.
 - Use **Gradcracker** when targeting graduate pipelines in the UK.
 - Use **UKVisaJobs** for sponsorship-specific UK searches.
+- Use **Welcome to the Jungle** for European job listings without needing credentials.
 - Use **Manual Import** when you already have a specific posting and need direct import.
 
 Many runs combine sources: broad discovery first, then manual import for high-priority jobs that scraping misses.
@@ -37,6 +39,7 @@ Many runs combine sources: broad discovery first, then manual import for high-pr
 - [JobSpy](/docs/next/extractors/jobspy)
 - [Adzuna](/docs/next/extractors/adzuna)
 - [Hiring Cafe](/docs/next/extractors/hiring-cafe)
+- [Welcome to the Jungle](/docs/next/extractors/wtj)
 - [UKVisaJobs](/docs/next/extractors/ukvisajobs)
 - [Manual Import](/docs/next/extractors/manual)
 - [Add an Extractor](/docs/next/workflows/add-an-extractor)
