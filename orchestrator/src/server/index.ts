@@ -5,6 +5,7 @@
 import "./config/env";
 import { logger } from "@infra/logger";
 import { sanitizeUnknown } from "@infra/sanitize";
+import { EXTRACTOR_SOURCE_METADATA } from "@shared/extractors";
 import { createApp } from "./app";
 import { initializeExtractorRegistry } from "./extractors/registry";
 import * as settingsRepo from "./repositories/settings";
@@ -20,7 +21,15 @@ import { initialize as initializeVisaSponsors } from "./services/visa-sponsors/i
 async function startServer() {
   await applyStoredEnvOverrides();
   try {
-    await initializeExtractorRegistry();
+    const extractorRegistry = await initializeExtractorRegistry();
+    logger.info("Registered extractor sources on startup", {
+      sourceCount: extractorRegistry.availableSources.length,
+      sources: extractorRegistry.availableSources.map((sourceId) => ({
+        id: sourceId,
+        label: EXTRACTOR_SOURCE_METADATA[sourceId].label,
+        manifestId: extractorRegistry.manifestBySource.get(sourceId)?.id,
+      })),
+    });
   } catch (error) {
     const sanitizedError = sanitizeUnknown(error);
     logger.error("Failed to initialize extractor registry", {
