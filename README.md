@@ -117,8 +117,8 @@ Self-hosting not your thing? A hosted version of JobOps is coming.
 - Self-hosted will always be free and open source
 
 👉 Join the waitlist at [https://try.jobops.app](https://try.jobops.app?utm_source=github&utm_medium=readme&utm_campaign=waitlist)
-
-<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#ff6b35', 'I2I81W21D7');kofiwidget2.draw();</script> 
+<br>
+Support me on [kofi](https://ko-fi.com/shaheersarfaraz)
 
 ## Contributing
 
