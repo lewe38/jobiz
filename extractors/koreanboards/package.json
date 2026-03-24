@@ -1,0 +1,19 @@
+{
+  "name": "koreanboards-extractor",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Korean job boards extractor – scrapes Wanted, Jumpit, Saramin, JobKorea, Albamon, PeopleNJob, Albacheon, Kowork, Klik via Python + BeautifulSoup",
+  "main": "src/run.ts",
+  "dependencies": {
+    "job-ops-shared": "^1.0.0",
+    "tsx": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "~5.9.0"
+  },
+  "scripts": {
+    "check:types": "tsc --noEmit",
+    "setup": "python3 -m venv .venv && .venv/bin/pip install -r requirements.txt"
+  }
+}
