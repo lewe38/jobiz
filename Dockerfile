@@ -24,7 +24,7 @@ WORKDIR /app
 
 # Install Python dependencies with pip cache
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install --no-cache-dir --break-system-packages playwright python-jobspy
+    pip3 install --no-cache-dir --break-system-packages playwright python-jobspy requests beautifulsoup4 lxml
 
 # Install Firefox for Python Playwright with cache
 RUN --mount=type=cache,target=/root/.cache/pip \
@@ -40,6 +40,7 @@ COPY extractors/hiringcafe/package*.json ./extractors/hiringcafe/
 COPY extractors/gradcracker/package*.json ./extractors/gradcracker/
 COPY extractors/startupjobs/package*.json ./extractors/startupjobs/
 COPY extractors/ukvisajobs/package*.json ./extractors/ukvisajobs/
+COPY extractors/koreanboards/package*.json ./extractors/koreanboards/
 
 # Install Node dependencies with npm cache (dev deps needed for build)
 RUN --mount=type=cache,target=/root/.npm \
@@ -62,6 +63,7 @@ COPY extractors/gradcracker ./extractors/gradcracker
 COPY extractors/jobspy ./extractors/jobspy
 COPY extractors/startupjobs ./extractors/startupjobs
 COPY extractors/ukvisajobs ./extractors/ukvisajobs
+COPY extractors/koreanboards ./extractors/koreanboards
 
 # Build documentation site bundle
 WORKDIR /app/docs-site
@@ -109,6 +111,7 @@ COPY extractors/hiringcafe/package*.json ./extractors/hiringcafe/
 COPY extractors/gradcracker/package*.json ./extractors/gradcracker/
 COPY extractors/startupjobs/package*.json ./extractors/startupjobs/
 COPY extractors/ukvisajobs/package*.json ./extractors/ukvisajobs/
+COPY extractors/koreanboards/package*.json ./extractors/koreanboards/
 
 # Install production Node dependencies only
 RUN --mount=type=cache,target=/root/.npm \
@@ -127,6 +130,7 @@ COPY extractors/gradcracker ./extractors/gradcracker
 COPY extractors/jobspy ./extractors/jobspy
 COPY extractors/startupjobs ./extractors/startupjobs
 COPY extractors/ukvisajobs ./extractors/ukvisajobs
+COPY extractors/koreanboards ./extractors/koreanboards
 
 # Reuse Camoufox binaries from builder instead of fetching again
 COPY --from=builder /root/.cache/camoufox /root/.cache/camoufox
