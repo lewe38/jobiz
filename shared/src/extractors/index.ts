@@ -9,6 +9,16 @@ export const EXTRACTOR_SOURCE_IDS = [
   "adzuna",
   "hiringcafe",
   "startupjobs",
+  // Korean platforms
+  "saramin",
+  "wanted",
+  "jumpit",
+  "jobkorea",
+  "albamon",
+  "peoplenjob",
+  "albacheon",
+  "kowork",
+  "klik",
   "manual",
 ] as const;
 
@@ -20,6 +30,7 @@ export interface ExtractorSourceMetadata {
   category: "pipeline" | "manual";
   requiresCredentials?: boolean;
   ukOnly?: boolean;
+  koreaOnly?: boolean;
 }
 
 export const EXTRACTOR_SOURCE_METADATA: Record<
@@ -50,7 +61,63 @@ export const EXTRACTOR_SOURCE_METADATA: Record<
   },
   hiringcafe: { label: "Hiring Cafe", order: 70, category: "pipeline" },
   startupjobs: { label: "startup.jobs", order: 80, category: "pipeline" },
-  manual: { label: "Manual", order: 90, category: "manual" },
+  // Korean platforms
+  saramin: {
+    label: "사람인 (Saramin)",
+    order: 100,
+    category: "pipeline",
+    requiresCredentials: true,
+    koreaOnly: true,
+  },
+  wanted: {
+    label: "원티드 (Wanted)",
+    order: 110,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  jumpit: {
+    label: "점핏 (Jumpit)",
+    order: 120,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  jobkorea: {
+    label: "잡코리아 (JobKorea)",
+    order: 130,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  albamon: {
+    label: "알바몬 (Albamon)",
+    order: 140,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  peoplenjob: {
+    label: "피플앤잡 (PeopleNJob)",
+    order: 150,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  albacheon: {
+    label: "알바천국 (Albacheon)",
+    order: 160,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  kowork: {
+    label: "코워크 (Kowork)",
+    order: 170,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  klik: {
+    label: "클릭잡 (Klik)",
+    order: 180,
+    category: "pipeline",
+    koreaOnly: true,
+  },
+  manual: { label: "Manual", order: 200, category: "manual" },
 };
 
 export const PIPELINE_EXTRACTOR_SOURCE_IDS = EXTRACTOR_SOURCE_IDS.filter(

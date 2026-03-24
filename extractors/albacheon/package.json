@@ -1,0 +1,20 @@
+{
+  "name": "albacheon-extractor",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Albacheon / Alba Heaven (알바천국) extractor – scrapes Korea's largest part-time job board",
+  "main": "src/main.ts",
+  "dependencies": {
+    "job-ops-shared": "^1.0.0",
+    "tsx": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "~5.9.0"
+  },
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "start:dev": "tsx src/main.ts",
+    "check:types": "tsc --noEmit"
+  }
+}
