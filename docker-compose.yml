@@ -166,7 +166,6 @@ services:
 
 # Volumes for data persistence
 volumes:
-  data:
   postgres_data:
   redis_data:
   minio_data:
