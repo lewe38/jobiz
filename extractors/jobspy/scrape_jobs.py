@@ -15,6 +15,11 @@ COUNTRY_ALIASES = {
     "united states": "united states",
     "türkiye": "turkey",
     "czech republic": "czechia",
+    "kr": "south korea",
+    "korea": "south korea",
+    "한국": "south korea",
+    "coree du sud": "south korea",
+    "corée du sud": "south korea",
 }
 GLASSDOOR_COUNTRY_TO_CITY = {
     "australia": "Sydney",

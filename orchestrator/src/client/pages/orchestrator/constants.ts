@@ -6,10 +6,13 @@ import {
 import type { JobSource, JobStatus } from "@shared/types";
 
 export const DEFAULT_PIPELINE_SOURCES: JobSource[] = [
-  "gradcracker",
-  "indeed",
+  "wanted",
+  "jumpit",
+  "jobkorea",
+  "peoplenjob",
+  "saramin",
   "linkedin",
-  "ukvisajobs",
+  "indeed",
 ];
 export const PIPELINE_SOURCES_STORAGE_KEY = "jobops.pipeline.sources";
 
