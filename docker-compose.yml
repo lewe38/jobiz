@@ -62,6 +62,22 @@ services:
       EXIT_ON_HEALTH_FAILURE: "true"
       PRE_REQUEST_HEALTH_CHECK: "true"
 
+  minio-init:
+    image: minio/mc:latest
+    container_name: jobiz-minio-init
+    depends_on:
+      minio:
+        condition: service_started
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      mc alias set local http://minio:9000 rxresume rxresume_secret;
+      mc mb --ignore-existing local/default;
+      mc anonymous set public local/default;
+      exit 0;
+      "
+    restart: "no"
+
   rxresume:
     image: amruthpillai/reactive-resume:latest
     container_name: jobiz-rxresume
@@ -75,6 +91,8 @@ services:
         condition: service_healthy
       minio:
         condition: service_started
+      minio-init:
+        condition: service_completed_successfully
       chrome:
         condition: service_started
     environment:
