@@ -113,6 +113,8 @@ services:
       STORAGE_ACCESS_KEY: rxresume
       STORAGE_SECRET_KEY: rxresume_secret
       STORAGE_USE_SSL: "false"
+      MAIL_FROM: noreply@localhost
+      DISABLE_EMAIL_AUTH: "true"
 
   # ---------------------------------------------------------------------------
   # Jobiz app
