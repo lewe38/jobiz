@@ -78,6 +78,84 @@ ALL_SITES = [
     "klik",
 ]
 
+# ─── English → Korean keyword translation ─────────────────────────────────────
+# When the user's search terms are in English, Korean job boards return far fewer
+# results. This dict maps common English job titles / keywords to their most-used
+# Korean equivalent so that scraping is effective without requiring the user to
+# manually add Korean terms.
+
+EN_TO_KO: dict[str, str] = {
+    # Engineering roles
+    "software engineer": "소프트웨어 엔지니어",
+    "software developer": "소프트웨어 개발자",
+    "backend engineer": "백엔드 개발자",
+    "backend developer": "백엔드 개발자",
+    "frontend engineer": "프론트엔드 개발자",
+    "frontend developer": "프론트엔드 개발자",
+    "full stack engineer": "풀스택 개발자",
+    "full stack developer": "풀스택 개발자",
+    "fullstack engineer": "풀스택 개발자",
+    "fullstack developer": "풀스택 개발자",
+    "mobile engineer": "모바일 개발자",
+    "mobile developer": "모바일 개발자",
+    "ios engineer": "iOS 개발자",
+    "ios developer": "iOS 개발자",
+    "android engineer": "안드로이드 개발자",
+    "android developer": "안드로이드 개발자",
+    "web developer": "웹 개발자",
+    "web engineer": "웹 개발자",
+    "devops engineer": "데브옵스 엔지니어",
+    "devops": "데브옵스",
+    "site reliability engineer": "SRE",
+    "sre": "SRE",
+    "cloud engineer": "클라우드 엔지니어",
+    "platform engineer": "플랫폼 엔지니어",
+    "embedded engineer": "임베디드 개발자",
+    "embedded developer": "임베디드 개발자",
+    "firmware engineer": "펌웨어 개발자",
+    "network engineer": "네트워크 엔지니어",
+    "system engineer": "시스템 엔지니어",
+    "systems engineer": "시스템 엔지니어",
+    "security engineer": "보안 엔지니어",
+    "cybersecurity": "보안",
+    # Data / AI / ML
+    "data scientist": "데이터 사이언티스트",
+    "data engineer": "데이터 엔지니어",
+    "data analyst": "데이터 분석가",
+    "machine learning engineer": "머신러닝 엔지니어",
+    "machine learning": "머신러닝",
+    "deep learning": "딥러닝",
+    "ai engineer": "AI 엔지니어",
+    "artificial intelligence": "인공지능",
+    "mlops": "MLOps",
+    # Product / Design
+    "product manager": "프로덕트 매니저",
+    "project manager": "프로젝트 매니저",
+    "ux designer": "UX 디자이너",
+    "ui designer": "UI 디자이너",
+    "product designer": "프로덕트 디자이너",
+    "graphic designer": "그래픽 디자이너",
+    # Generic
+    "developer": "개발자",
+    "engineer": "엔지니어",
+    "intern": "인턴",
+    "internship": "인턴십",
+    "junior": "주니어",
+    "senior": "시니어",
+    "lead": "리드",
+    "manager": "매니저",
+    "remote": "원격근무",
+}
+
+
+def translate_to_korean(term: str) -> str:
+    """Return the Korean translation of *term* if known, else return *term* as-is.
+
+    Lookup is case-insensitive and falls back to the original term so that
+    already-Korean inputs (or unknown English terms) pass through unchanged.
+    """
+    return EN_TO_KO.get(term.strip().lower(), term)
+
 # ─── Data model ───────────────────────────────────────────────────────────────
 
 @dataclass
@@ -808,7 +886,7 @@ def main() -> int:
         print("[koreanboards] No valid sites specified.", file=sys.stderr)
         return 1
 
-    keyword = _env_str("KOREAN_SEARCH_TERM", "개발자")
+    keyword = translate_to_korean(_env_str("KOREAN_SEARCH_TERM", "개발자"))
     max_results = _env_int("KOREAN_RESULTS_WANTED", 50)
     term_index = _env_int("KOREAN_TERM_INDEX", 1)
     term_total = _env_int("KOREAN_TERM_TOTAL", 1)

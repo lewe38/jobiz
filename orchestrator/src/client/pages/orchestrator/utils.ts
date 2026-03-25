@@ -205,6 +205,25 @@ export const getEnabledSources = (
       source === "glassdoor"
     ) {
       enabled.push(source);
+      continue;
+    }
+    // Korean platforms — saramin requires an API key, others are free
+    if (source === "saramin") {
+      if (settings.saraminAccessKeyHint) enabled.push(source);
+      continue;
+    }
+    if (
+      source === "wanted" ||
+      source === "jumpit" ||
+      source === "jobkorea" ||
+      source === "albamon" ||
+      source === "peoplenjob" ||
+      source === "albacheon" ||
+      source === "kowork" ||
+      source === "klik"
+    ) {
+      enabled.push(source);
+      continue;
     }
   }
 
