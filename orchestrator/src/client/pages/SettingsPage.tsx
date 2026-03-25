@@ -346,6 +346,7 @@ const getDerivedSettings = (settings: AppSettings | null) => {
         rxresumePasswordHint: settings?.rxresumePasswordHint ?? null,
         ukvisajobsPasswordHint: settings?.ukvisajobsPasswordHint ?? null,
         adzunaAppKeyHint: settings?.adzunaAppKeyHint ?? null,
+        saraminAccessKeyHint: settings?.saraminAccessKeyHint ?? null,
         basicAuthPasswordHint: settings?.basicAuthPasswordHint ?? null,
         webhookSecretHint: settings?.webhookSecretHint ?? null,
       },

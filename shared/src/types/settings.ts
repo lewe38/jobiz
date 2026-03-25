@@ -198,6 +198,7 @@ export interface AppSettings {
   rxresumePasswordHint: string | null;
   ukvisajobsPasswordHint: string | null;
   adzunaAppKeyHint: string | null;
+  saraminAccessKeyHint: string | null;
   basicAuthPasswordHint: string | null;
   webhookSecretHint: string | null;
 

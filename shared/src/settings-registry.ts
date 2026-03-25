@@ -289,6 +289,19 @@ export const settingsRegistry = {
     parse: parseIntOrNull,
     serialize: serializeNullableNumber,
   },
+  koreanResultsWanted: {
+    kind: "typed" as const,
+    schema: z.number().int().min(1).max(500),
+    default: (): number =>
+      parseInt(
+        typeof process !== "undefined"
+          ? process.env.KOREAN_RESULTS_WANTED || "50"
+          : "50",
+        10,
+      ),
+    parse: parseIntOrNull,
+    serialize: serializeNullableNumber,
+  },
   searchTerms: {
     kind: "typed" as const,
     schema: z.array(z.string().trim().min(1).max(200)).max(100),
@@ -568,6 +581,11 @@ export const settingsRegistry = {
   adzunaAppId: {
     kind: "string" as const,
     envKey: "ADZUNA_APP_ID",
+    schema: z.string().trim().max(200),
+  },
+  saraminAccessKey: {
+    kind: "secret" as const,
+    envKey: "SARAMIN_ACCESS_KEY",
     schema: z.string().trim().max(200),
   },
   basicAuthUser: {

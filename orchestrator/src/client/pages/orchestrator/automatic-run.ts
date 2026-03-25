@@ -90,6 +90,7 @@ export interface ExtractorLimits {
   ukvisajobsMaxJobs: number;
   adzunaMaxJobsPerTerm: number;
   startupjobsMaxJobsPerTerm: number;
+  koreanResultsWanted: number;
 }
 
 export function deriveExtractorLimits(args: {
@@ -107,6 +108,8 @@ export function deriveExtractorLimits(args: {
   const includesAdzuna = args.sources.includes("adzuna");
   const includesHiringCafe = args.sources.includes("hiringcafe");
   const includesStartupJobs = args.sources.includes("startupjobs");
+  const koreanSources = ["saramin","wanted","jumpit","jobkorea","albamon","peoplenjob","albacheon","kowork","klik"] as const;
+  const includesKorean = koreanSources.some((s) => args.sources.includes(s));
 
   const weightedContributors =
     (includesIndeed ? termCount : 0) +
@@ -116,7 +119,8 @@ export function deriveExtractorLimits(args: {
     (includesUkVisaJobs ? 1 : 0) +
     (includesAdzuna ? termCount : 0) +
     (includesHiringCafe ? termCount : 0) +
-    (includesStartupJobs ? termCount : 0);
+    (includesStartupJobs ? termCount : 0) +
+    (includesKorean ? termCount : 0);
 
   if (weightedContributors <= 0) {
     return {
@@ -125,6 +129,7 @@ export function deriveExtractorLimits(args: {
       ukvisajobsMaxJobs: budget,
       adzunaMaxJobsPerTerm: budget,
       startupjobsMaxJobsPerTerm: budget,
+      koreanResultsWanted: budget,
     };
   }
 
@@ -137,6 +142,7 @@ export function deriveExtractorLimits(args: {
     ukvisajobsMaxJobs: Math.min(budget, perUnit + remainder),
     adzunaMaxJobsPerTerm: perUnit,
     startupjobsMaxJobsPerTerm: perUnit,
+    koreanResultsWanted: perUnit,
   };
 }
 

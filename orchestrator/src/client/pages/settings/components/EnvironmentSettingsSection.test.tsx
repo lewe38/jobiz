@@ -35,6 +35,7 @@ const EnvironmentSettingsHarness = () => {
               rxresumePasswordHint: null,
               ukvisajobsPasswordHint: "pass",
               adzunaAppKeyHint: "adzu",
+              saraminAccessKeyHint: null,
               basicAuthPasswordHint: "abcd",
               webhookSecretHint: "sec-",
             },

@@ -71,6 +71,33 @@ export const EnvironmentSettingsSection: React.FC<
             </div>
 
             <div className="space-y-4">
+              <div className="text-sm font-semibold">Saramin (사람인)</div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <SettingsInput
+                  label="Access Key"
+                  inputProps={register("saraminAccessKey")}
+                  type="password"
+                  placeholder="Enter Saramin API key"
+                  disabled={isLoading || isSaving}
+                  error={errors.saraminAccessKey?.message as string | undefined}
+                  current={formatSecretHint(privateValues.saraminAccessKeyHint)}
+                />
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Optional — free key at{" "}
+                <a
+                  href="https://oapi.saramin.co.kr"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline"
+                >
+                  oapi.saramin.co.kr
+                </a>
+                . Other Korean boards work without a key.
+              </p>
+            </div>
+
+            <div className="space-y-4">
               <div className="text-sm font-semibold">Adzuna</div>
               <div className="grid gap-4 md:grid-cols-2">
                 <SettingsInput

@@ -220,6 +220,7 @@ export const createAppSettings = (
   ukvisajobsPasswordHint: null,
   adzunaAppId: null,
   adzunaAppKeyHint: null,
+  saraminAccessKeyHint: null,
   webhookSecretHint: null,
   basicAuthActive: false,
   backupEnabled: { value: false, default: false, override: null },

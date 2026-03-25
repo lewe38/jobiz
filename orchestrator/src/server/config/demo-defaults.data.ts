@@ -256,6 +256,15 @@ export const DEMO_SOURCE_BASE_URLS: Record<JobSource, string> = {
   adzuna: "https://www.adzuna.com",
   hiringcafe: "https://hiring.cafe",
   startupjobs: "https://startup.jobs",
+  saramin: "https://www.saramin.co.kr",
+  wanted: "https://www.wanted.co.kr",
+  jumpit: "https://jumpit.saramin.co.kr",
+  jobkorea: "https://www.jobkorea.co.kr",
+  albamon: "https://www.albamon.com",
+  peoplenjob: "https://www.peoplenjob.com",
+  albacheon: "https://www.alba.co.kr",
+  kowork: "https://kowork.net",
+  klik: "https://klik.co.kr",
   manual: "https://example.com",
 };
 
